@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg bg-dark" >
+  <div class="container">
+    <%= link_to "KariPic", root_path, class:"navbar-brand tcolor kp" %>
+    <i class="fa-solid fa-camera-retro fa-2xl" style="color: #f5f061;"></i>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNavDropdown">
+    <ul class="navbar-nav ms-auto ">
+    </ul>
+       <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle tcolor" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <% if kpuser_signed_in? %>
+            <% if current_kpuser.name %>
+            Hola <%= current_kpuser.name %>  
+            <% else %>
+            Hola <%= current_kpuser.email %>
+            <% end %>
+            <% if current_kpuser.avatar.persisted? %>
+            <%= image_tag current_kpuser.avatar, class:"rounded-circle avatar" %>
+            <% end %>
+            <% else %>
+            Inicia sesión / Registrate
+            <% end %>
+          </a>
+          <div>
+          <ul class="dropdown-menu">
+          <% if kpuser_signed_in? %>
+           <li><%= link_to "Editar Perfil", edit_kpuser_registration_path, class:"dropdown-item" %></li>
+            <li><%= button_to "Cerrar Sesión", destroy_kpuser_session_path, class:"dropdown-item", method: :delete %></li>
+            <% else %> 
+            <li><%= link_to "Iniciar Sesión", new_kpuser_session_path, class:"dropdown-item" %></li>
+            <li><%= link_to "Registrarme", new_kpuser_registration_path, class:"dropdown-item" %></li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </div>
+</nav>

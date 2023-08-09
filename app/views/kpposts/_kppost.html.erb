@@ -1,0 +1,30 @@
+<div id="<%= dom_id kppost %>">
+
+<div class="bg-light p-2 text-dark bg-opacity-75">
+
+ <div class="d-flex text-start">
+ <p>
+ <% if kppost.kpuser.avatar.persisted? %>
+ <%= image_tag kppost.kpuser.avatar, class: "rounded-circle avatarr" %> 
+ <% end %>
+
+ <strong> <%= kppost.kpuser.name.capitalize %></strong>
+    </p>
+ 
+</div>
+ 
+
+  <div class="d-flex">
+          <% kppost.images.each do |image| %>
+      <%= image_tag image, class:"w-50"%>
+  <% end %>
+</div>
+
+  <p class="mt-1 ms-3 text-start">
+     <strong> <%= kppost.kpuser.name %>:</strong>
+    <%= kppost.description.capitalize %>
+  </p>
+</div>
+</div>
+
+</div>

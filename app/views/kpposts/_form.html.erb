@@ -1,0 +1,28 @@
+<%= form_with(model: kppost) do |form| %>
+  <% if kppost.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(kppost.errors.count, "error") %> prohibited this kppost from being saved:</h2>
+
+      <ul>
+        <% kppost.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description, class:"form-control" %>
+  </div>
+
+
+<div class="form-group mb-3 ">
+<%= form.label :images %>
+<%= form.file_field :images, multiple: true, class:"form-controller" %>
+</div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

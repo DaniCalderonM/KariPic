@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+
+<div class=" mb-2 ">
+<% if Kpuser.first == current_kpuser %>
+<%= link_to "Sube una nueva Publicación", new_kppost_path, class: "btn btn-success" %>
+<% end %>
+</div>
+
+<div id="kpposts">
+  <% @kpposts.each do |kppost| %>
+    <%= render kppost %>
+    <p class="mt-2">
+      <%= link_to "Mostrar esta publicación", kppost, class: "btn btn-dark" %>
+    </p>
+  <% end %>
+</div>
+
+

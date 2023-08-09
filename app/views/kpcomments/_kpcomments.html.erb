@@ -1,0 +1,51 @@
+<div class="col-6" >
+<div class="card mt-3 mb-3 ttcolor ">
+  <div class="card-header border-bottom-0 font-weight-bold bg-transparent">Comentarios</div>
+  <ul class="list-group list-group-flush">
+    <% @kppost.kpcomments.each do |comment| %>
+      <li class="list-group-item">
+        <header> 
+        <% if comment.kpuser.avatar.persisted? %>
+        <%= image_tag comment.kpuser.avatar, class:"rounded-circle avatarr" %><strong><%= (comment.kpuser.name.capitalize if comment.kpuser) %></strong> wrote <%= distance_of_time_in_words(Time.current, comment.created_at) %> ago</header>
+        <% else %>
+        <header><i class="fa-solid fa-camera fa-2xl"></i> <strong><%= (comment.kpuser.name.capitalize if comment.kpuser) %></strong> wrote <%= distance_of_time_in_words(Time.current, comment.created_at) %> ago</header>
+        <% end %>
+        <div><strong><%= comment.content.capitalize %></strong></div>
+         <% if comment.kpuser == current_kpuser %>
+         <div class="mt-2">
+        <%= button_to "Eliminar comentario", comment, method: :delete %>
+        </div>
+            <% end %>
+      </li>
+    <% end %>
+
+    <% if @kppost.kpcomments.empty? %>
+      <li class="list-group-item text-center">Aún no hay comentarios para este post uwu</li>
+    <% end %>
+  </ul>
+</div>
+
+<% if signed_in? %>
+  <div class="card bg-light new-comment ttcolor">
+    <div class="card-body">
+      <p class="font-weight-bold">Deja tu comentario:</p>
+      <%= form_for @kppost.kpcomments.build do |f| %>
+        <%= f.hidden_field :kppost_id, value: @kppost.id %>
+        <div class="form-group">
+          <%= f.text_area :content, rows: 4, class: "form-control" %>
+        </div>
+
+        <div class="text-right">
+          <%= f.submit "Comentar", class: "btn btn-primary mt-2" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="card bg-light mt-3 ttcolor">
+    <div class="card-body">
+      <p class="card-text text-center lead"><%= link_to "Regístrate", new_kpuser_registration_path %> o <%= link_to "Ingresa", new_kpuser_session_path %> para comentar :)</p>
+    </div>
+  </div>
+<% end %>
+</div>
