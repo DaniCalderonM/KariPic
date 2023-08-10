@@ -22,13 +22,13 @@
             Inicia sesión / Registrate
             <% end %>
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu ">
           <% if kpuser_signed_in? %>
-           <li><%= link_to "Editar Perfil", edit_kpuser_registration_path, class:"dropdown-item" %></li>
-            <li><%= button_to "Cerrar Sesión", destroy_kpuser_session_path, class:"dropdown-item", method: :delete %></li>
+           <li><%= link_to "Editar Perfil", edit_kpuser_registration_path, class:"dropdown-item tcolor" %></li>
+            <li><%= button_to "Cerrar Sesión", destroy_kpuser_session_path, class:"dropdown-item tcolor", method: :delete %></li>
             <% else %> 
-            <li><%= link_to "Iniciar Sesión", new_kpuser_session_path, class:"dropdown-item" %></li>
-            <li><%= link_to "Registrarme", new_kpuser_registration_path, class:"dropdown-item" %></li>
+            <li><%= link_to "Iniciar Sesión", new_kpuser_session_path, class:"dropdown-item tcolor" %></li>
+            <li><%= link_to "Registrarme", new_kpuser_registration_path, class:"dropdown-item tcolor" %></li>
             <% end %>
           </ul>
         </li>
