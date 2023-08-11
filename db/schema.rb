@@ -42,14 +42,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_04_023643) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "kpimages", force: :cascade do |t|
-    t.string "kpimageable_type", null: false
-    t.bigint "kpimageable_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["kpimageable_type", "imageable_id"], name: "index_images_on_imageable"
-  end
-
   create_table "kpcomments", force: :cascade do |t|
     t.string "content"
     t.bigint "kpuser_id", null: false
@@ -58,6 +50,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_04_023643) do
     t.datetime "updated_at", null: false
     t.index ["kppost_id"], name: "index_kpcomments_on_kppost_id"
     t.index ["kpuser_id"], name: "index_kpcomments_on_kpuser_id"
+  end
+
+  create_table "kpimages", force: :cascade do |t|
+    t.string "kpimageable_type", null: false
+    t.bigint "kpimageable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["kpimageable_type", "kpimageable_id"], name: "index_kpimages_on_kpimageable"
   end
 
   create_table "kpposts", force: :cascade do |t|
