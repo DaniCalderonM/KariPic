@@ -42,12 +42,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_04_023643) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "images", force: :cascade do |t|
-    t.string "imageable_type", null: false
-    t.bigint "imageable_id", null: false
+  create_table "kpimages", force: :cascade do |t|
+    t.string "kpimageable_type", null: false
+    t.bigint "kpimageable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable"
+    t.index ["kpimageable_type", "imageable_id"], name: "index_images_on_imageable"
   end
 
   create_table "kpcomments", force: :cascade do |t|
