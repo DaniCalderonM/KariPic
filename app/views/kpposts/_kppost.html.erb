@@ -5,26 +5,26 @@
  <div class="d-flex text-start">
  <p>
  <% if kppost.kpuser.avatar.persisted? %>
- <%= image_tag kppost.kpuser.avatar, class: "rounded-circle avatarr" %> 
+ <%= image_tag kppost.kpuser.avatar, class: "rounded-circle avatarr ms-3" %> 
  <% end %>
 
  <strong> <%= kppost.kpuser.name.capitalize %></strong>
-    </p>
- 
+  </p>
 </div>
  
 
-  <div class="d-flex">
+  <div class="text-center">
           <% kppost.images.each do |image| %>
-      <%= image_tag image, class:"w-50"%>
+      <%= image_tag image, class:"photo"%>
   <% end %>
 </div>
 
-  <p class="mt-1 ms-3 text-start">
+<p class="text-center tcolor">❀＊*•̩̩͙✩•̩̩͙*˚❀˚*•̩̩͙✩•̩̩͙*˚＊❀ ❀＊*•̩̩͙✩•̩̩͙*˚❀˚*•̩̩͙✩•̩̩͙*˚＊❀</p>
+
+  <p class="mt-1 ms-3 text-start desc">
      <strong> <%= kppost.kpuser.name %>:</strong>
-    <%= kppost.description.capitalize %>
+    <em><%= kppost.description.capitalize %></em>
   </p>
-</div>
 </div>
 
 </div>
