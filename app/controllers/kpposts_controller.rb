@@ -71,6 +71,6 @@ class KppostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def kppost_params
-      params.require(:kppost).permit(:description, :kpuser_id, images: [])
+      params.require(:kppost).permit(:description, :kpuser_id, kpimages: [])
     end
 end
