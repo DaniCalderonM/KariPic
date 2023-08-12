@@ -31,7 +31,7 @@ class KppostsController < ApplicationController
 
     respond_to do |format|
       if @kppost.save
-        format.html { redirect_to kppost_url(@kppost), notice: "Kppost was successfully created." }
+        format.html { redirect_to kppost_url(@kppost), notice: "La publicacion fue creada con exito" }
         format.json { render :show, status: :created, location: @kppost }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -44,7 +44,7 @@ class KppostsController < ApplicationController
   def update
     respond_to do |format|
       if @kppost.update(kppost_params)
-        format.html { redirect_to kppost_url(@kppost), notice: "Kppost was successfully updated." }
+        format.html { redirect_to kppost_url(@kppost), notice: "La publicacion fue actualizada con exito" }
         format.json { render :show, status: :ok, location: @kppost }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -58,7 +58,7 @@ class KppostsController < ApplicationController
     @kppost.destroy
 
     respond_to do |format|
-      format.html { redirect_to kpposts_url, notice: "Kppost was successfully destroyed." }
+      format.html { redirect_to kpposts_url, notice: "La publicacion fue destruida con exito." }
       format.json { head :no_content }
     end
   end
